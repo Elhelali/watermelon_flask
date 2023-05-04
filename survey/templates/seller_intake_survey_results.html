@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seller Intake Survey Data</title>
+	<!-- Load Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+	<!-- Load jQuery library and Bootstrap JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+	<!-- Load DataTables CSS and JS -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+	<!-- Initialize DataTables -->
+	<script>
+		$(document).ready( function () {
+		    var table = $('#survey_table').DataTable({
+		        "order": [[ 3, "desc" ]]
+            });
+		});
+	</script>
+</head>
+<body>
+		<table id="survey_table">
+			<thead>
+				<tr>
+					<th>survey_id</th>
+					<th>store_name</th>
+					<th>gift_card_amount_currency</th>
+                    <th>gift_card_amount</th>
+                    <th>price_currency</th>
+                    <th>price</th>
+                    <th>crypto_network</th>
+                    <th>wallet_address</th>
+                    <th>email_address</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for survey in surveys %}
+					<tr>
+						<td>{{ survey['_id'] }}</td>
+                        <td>{{ survey['name'] }}</td>
+                        <td>{{ survey['currency'] }}</td>
+                        <td>{{ survey['balance'] }}</td>
+                        <td>{{ survey['sell_currency'] }}</td>
+                        <td>{{ survey['sell_price'] }}</td>
+                        <td>{{ survey['network'] }}</td>
+                        <td>{{ survey['recipient_address'] }}</td>
+                        <td>{{ survey['email'] }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+</body>
+</html>
