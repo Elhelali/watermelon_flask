@@ -1,0 +1,5 @@
+config.py
+build
+__pycache__
+frontend
+env
